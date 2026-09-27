@@ -1,0 +1,9 @@
+node_modules/
+.env
+.env.*
+!.env.example
+
+backend/firebase-service-account.json
+
+frontend/dist/
+backend/uploads/

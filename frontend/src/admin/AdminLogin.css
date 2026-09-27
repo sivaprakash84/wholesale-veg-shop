@@ -1,0 +1,316 @@
+/* =========================================
+   ADMIN LOGIN PAGE
+========================================= */
+
+.admin-login-page {
+  min-height: calc(100vh - 70px);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 40px 20px;
+
+  background: #f7f8f5;
+}
+
+
+/* =========================================
+   LOGIN BOX
+========================================= */
+
+.admin-login-box {
+  width: 100%;
+  max-width: 430px;
+
+  background: #ffffff;
+
+  padding: 42px 38px;
+
+  border-radius: 18px;
+
+  box-shadow:
+    0 10px 35px rgba(0, 0, 0, 0.08);
+
+  text-align: center;
+}
+
+
+/* =========================================
+   LOCK ICON
+========================================= */
+
+.admin-login-icon {
+  width: 64px;
+  height: 64px;
+
+  margin: 0 auto 20px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border-radius: 50%;
+
+  background: #f1f7ed;
+
+  font-size: 30px;
+}
+
+
+/* =========================================
+   BRAND LABEL
+========================================= */
+
+.section-label {
+  margin: 0 0 8px;
+
+  font-size: 13px;
+
+  font-weight: 700;
+
+  letter-spacing: 2px;
+
+  color: #5b8c3a;
+}
+
+
+/* =========================================
+   TITLE
+========================================= */
+
+.admin-login-box h1 {
+  margin: 0;
+
+  font-size: 30px;
+
+  font-weight: 700;
+
+  color: #202820;
+}
+
+
+/* =========================================
+   SUBTITLE
+========================================= */
+
+.admin-login-subtitle {
+  margin: 12px auto 28px;
+
+  max-width: 340px;
+
+  font-size: 14px;
+
+  line-height: 1.6;
+
+  color: #737873;
+}
+
+
+/* =========================================
+   ERROR MESSAGE
+========================================= */
+
+.admin-login-error {
+  margin-bottom: 20px;
+
+  padding: 12px 14px;
+
+  border-radius: 10px;
+
+  background: #fff1f1;
+
+  border: 1px solid #f2cccc;
+
+  color: #c0392b;
+
+  font-size: 13px;
+
+  line-height: 1.5;
+
+  text-align: left;
+}
+
+
+/* =========================================
+   GOOGLE LOGIN BUTTON
+========================================= */
+
+.admin-google-button {
+  width: 100%;
+
+  height: 52px;
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: center;
+
+  gap: 12px;
+
+  border: 1px solid #dadce0;
+
+  border-radius: 10px;
+
+  background: #ffffff;
+
+  color: #303030;
+
+  font-size: 15px;
+
+  font-weight: 600;
+
+  cursor: pointer;
+
+  transition:
+    background 0.2s ease,
+    box-shadow 0.2s ease,
+    transform 0.15s ease;
+}
+
+
+.admin-google-button:hover {
+  background: #f8f9fa;
+
+  box-shadow:
+    0 3px 10px rgba(0, 0, 0, 0.08);
+
+  transform: translateY(-1px);
+}
+
+
+.admin-google-button:active {
+  transform: translateY(0);
+}
+
+
+.admin-google-button:disabled {
+  cursor: not-allowed;
+
+  opacity: 0.65;
+
+  transform: none;
+
+  box-shadow: none;
+}
+
+
+/* =========================================
+   GOOGLE "G" ICON
+========================================= */
+
+.google-icon {
+  width: 22px;
+  height: 22px;
+
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+
+  font-size: 19px;
+
+  font-weight: 700;
+
+  font-family: Arial, sans-serif;
+}
+
+
+/* =========================================
+   LOGIN NOTE
+========================================= */
+
+.admin-login-note {
+  margin: 22px 5px 0;
+
+  font-size: 12px;
+
+  line-height: 1.6;
+
+  color: #8a8f8a;
+}
+
+
+/* =========================================
+   RESPONSIVE
+========================================= */
+
+@media (max-width: 500px) {
+
+  .admin-login-page {
+    padding: 25px 15px;
+  }
+
+  .admin-login-box {
+    padding: 34px 24px;
+
+    border-radius: 15px;
+  }
+
+  .admin-login-box h1 {
+    font-size: 26px;
+  }
+
+}
+
+/* =========================================
+   SAD 72 LOGO - ADMIN LOGIN
+   SAME VISUAL SIZE AS ADMIN NAVBAR
+========================================= */
+
+.admin-login-logo-box {
+  width: 48px !important;
+  height: 48px !important;
+  margin: 0 auto 8px !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  overflow: hidden !important;
+  flex-shrink: 0 !important;
+}
+
+.admin-login-logo {
+  width: 48px !important;
+  height: 48px !important;
+  max-width: 48px !important;
+  max-height: 48px !important;
+  min-width: 48px !important;
+  min-height: 48px !important;
+  object-fit: contain !important;
+  display: block !important;
+}
+
+/* =========================================
+   SAD WHOLESALE BRAND
+========================================= */
+
+.admin-login-brand {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  margin-bottom: 24px;
+}
+
+.admin-login-brand-logo {
+  width: 48px !important;
+  height: 48px !important;
+  min-width: 48px !important;
+  min-height: 48px !important;
+  max-width: 48px !important;
+  max-height: 48px !important;
+  object-fit: contain !important;
+  display: block !important;
+  flex-shrink: 0;
+}
+
+.admin-login-brand-name {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  font-size: 20px;
+  font-weight: 800;
+  line-height: 1.2;
+  color: #176b3a;
+  text-align: center;
+}
