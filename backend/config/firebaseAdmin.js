@@ -8,7 +8,20 @@ const {
   getAuth,
 } = require("firebase-admin/auth");
 
-const serviceAccount = require("../firebase-service-account.json");
+const fs = require("fs");
+
+const localPath = require("path").join(
+  __dirname,
+  "../firebase-service-account.json"
+);
+
+const renderPath = "/etc/secrets/firebase-service-account.json";
+
+const serviceAccountPath = fs.existsSync(renderPath)
+  ? renderPath
+  : localPath;
+
+const serviceAccount = require(serviceAccountPath);
 
 if (getApps().length === 0) {
   initializeApp({
