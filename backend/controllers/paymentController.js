@@ -1,7 +1,6 @@
 const PaymentSettings = require("../models/PaymentSettings");
 const Order = require("../models/Order");
 
-
 // =====================================================
 // GET PAYMENT SETTINGS
 // =====================================================
@@ -19,7 +18,6 @@ const getPaymentSettings = async (req, res) => {
     }
 
     res.status(200).json(settings);
-
   } catch (error) {
     console.error(
       "Get Payment Settings Error:",
@@ -33,7 +31,6 @@ const getPaymentSettings = async (req, res) => {
   }
 };
 
-
 // =====================================================
 // UPDATE PAYMENT SETTINGS - ADMIN
 // =====================================================
@@ -45,20 +42,27 @@ const updatePaymentSettings = async (req, res) => {
       paymentName,
     } = req.body;
 
-    let settings =
-      await PaymentSettings.findOne();
+    let settings = await PaymentSettings.findOne();
 
     if (!settings) {
       settings = new PaymentSettings();
     }
 
+    // =================================================
+    // SAVE ADMIN QR IMAGE DIRECTLY IN MONGODB
+    // =================================================
+
     if (req.file) {
+      const mimeType = req.file.mimetype;
+
+      const base64Image =
+        req.file.buffer.toString("base64");
+
       settings.qrImage =
-        `/uploads/payment/${req.file.filename}`;
+        `data:${mimeType};base64,${base64Image}`;
     }
 
-    settings.upiId =
-      upiId || "";
+    settings.upiId = upiId || "";
 
     settings.paymentName =
       paymentName || "";
@@ -71,7 +75,6 @@ const updatePaymentSettings = async (req, res) => {
 
       settings,
     });
-
   } catch (error) {
     console.error(
       "Update Payment Settings Error:",
@@ -87,16 +90,13 @@ const updatePaymentSettings = async (req, res) => {
   }
 };
 
-
 // =====================================================
 // SUBMIT CUSTOMER PAYMENT SCREENSHOT
 // =====================================================
 
 const submitPayment = async (req, res) => {
   try {
-
     // Check customer authentication
-
     if (
       !req.customer ||
       !req.customer.uid
@@ -107,9 +107,7 @@ const submitPayment = async (req, res) => {
       });
     }
 
-
     // Check uploaded screenshot
-
     if (!req.file) {
       return res.status(400).json({
         message:
@@ -117,12 +115,10 @@ const submitPayment = async (req, res) => {
       });
     }
 
-
     const {
       orderId,
       amount,
     } = req.body;
-
 
     if (!orderId) {
       return res.status(400).json({
@@ -131,16 +127,13 @@ const submitPayment = async (req, res) => {
       });
     }
 
-
     // Find only this customer's order
-
     const order =
       await Order.findOne({
         orderId,
         customerUid:
           req.customer.uid,
       });
-
 
     if (!order) {
       return res.status(404).json({
@@ -149,9 +142,7 @@ const submitPayment = async (req, res) => {
       });
     }
 
-
     // Prevent duplicate submission
-
     if (
       order.paymentStatus === "Paid"
     ) {
@@ -161,16 +152,15 @@ const submitPayment = async (req, res) => {
       });
     }
 
-
     // Save screenshot path
+    // Customer payment screenshots continue
+    // using the existing uploads/payment folder.
 
     order.paymentScreenshot =
       `/uploads/payment/${req.file.filename}`;
 
-
     order.paymentSubmittedAt =
       new Date();
-
 
     // Payment remains pending
     // until admin verifies it
@@ -178,15 +168,11 @@ const submitPayment = async (req, res) => {
     order.paymentStatus =
       "Pending";
 
-
     // Customer paid using QR / UPI
-
     order.paymentMethod =
       "UPI";
 
-
     await order.save();
-
 
     res.status(200).json({
       message:
@@ -204,9 +190,7 @@ const submitPayment = async (req, res) => {
       paymentSubmittedAt:
         order.paymentSubmittedAt,
     });
-
   } catch (error) {
-
     console.error(
       "Submit Payment Error:",
       error
@@ -220,7 +204,6 @@ const submitPayment = async (req, res) => {
     });
   }
 };
-
 
 module.exports = {
   getPaymentSettings,

@@ -13,18 +13,18 @@ const customerAuth = require("../middleware/customerAuthMiddleware");
 
 const router = express.Router();
 
+// =====================================================
+// CUSTOMER PAYMENT SCREENSHOT STORAGE
+// =====================================================
 
-// ===============================
-// MULTER STORAGE
-// ===============================
-
-const storage = multer.diskStorage({
+const screenshotStorage = multer.diskStorage({
   destination: (req, file, cb) => {
     cb(null, "uploads/payment");
   },
 
   filename: (req, file, cb) => {
-    const extension = path.extname(file.originalname);
+    const extension =
+      path.extname(file.originalname);
 
     cb(
       null,
@@ -33,41 +33,71 @@ const storage = multer.diskStorage({
   },
 });
 
+// =====================================================
+// ADMIN QR IMAGE STORAGE
+// =====================================================
 
-// ===============================
-// MULTER CONFIGURATION
-// ===============================
+// QR image is stored in MongoDB as base64.
+// This avoids depending on Render's temporary filesystem.
 
-const upload = multer({
-  storage,
+const qrStorage = multer.memoryStorage();
+
+// =====================================================
+// COMMON FILE VALIDATION
+// =====================================================
+
+const fileFilter = (req, file, cb) => {
+  const allowedTypes = [
+    "image/jpeg",
+    "image/png",
+    "image/webp",
+  ];
+
+  if (
+    allowedTypes.includes(file.mimetype)
+  ) {
+    cb(null, true);
+  } else {
+    cb(
+      new Error(
+        "Only JPG, PNG and WEBP images are allowed"
+      )
+    );
+  }
+};
+
+// =====================================================
+// ADMIN QR UPLOAD
+// =====================================================
+
+const uploadQr = multer({
+  storage: qrStorage,
 
   limits: {
     fileSize: 5 * 1024 * 1024,
   },
 
-  fileFilter: (req, file, cb) => {
-    const allowedTypes = [
-      "image/jpeg",
-      "image/png",
-      "image/webp",
-    ];
-
-    if (allowedTypes.includes(file.mimetype)) {
-      cb(null, true);
-    } else {
-      cb(
-        new Error(
-          "Only JPG, PNG and WEBP images are allowed"
-        )
-      );
-    }
-  },
+  fileFilter,
 });
 
+// =====================================================
+// CUSTOMER SCREENSHOT UPLOAD
+// =====================================================
 
-// ===============================
+const uploadScreenshot = multer({
+  storage: screenshotStorage,
+
+  limits: {
+    fileSize: 5 * 1024 * 1024,
+  },
+
+  fileFilter,
+});
+
+// =====================================================
 // GET PAYMENT SETTINGS
-// ===============================
+// =====================================================
+
 // Customer can view QR / UPI details
 
 router.get(
@@ -75,31 +105,30 @@ router.get(
   getPaymentSettings
 );
 
-
-// ===============================
+// =====================================================
 // UPDATE PAYMENT SETTINGS
-// ===============================
+// =====================================================
+
 // Admin only
 
 router.put(
   "/",
   protectAdmin,
-  upload.single("qrImage"),
+  uploadQr.single("qrImage"),
   updatePaymentSettings
 );
 
-
-// ===============================
+// =====================================================
 // SUBMIT PAYMENT SCREENSHOT
-// ===============================
+// =====================================================
+
 // Customer only
 
 router.post(
   "/submit",
   customerAuth,
-  upload.single("screenshot"),
+  uploadScreenshot.single("screenshot"),
   submitPayment
 );
-
 
 module.exports = router;

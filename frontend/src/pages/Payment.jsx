@@ -132,17 +132,21 @@ function Payment() {
               </p>
 
               <img
-                src={`https://wholesale-veg-shop.onrender.com${paymentSettings.qrImage}`}
-                alt={t("paymentQrCode")}
-                style={{
-                  width: "300px",
-                  maxWidth: "100%",
-                  border: "1px solid #ddd",
-                  borderRadius: "12px",
-                  padding: "10px",
-                  background: "#fff",
-                }}
-              />
+  src={
+    paymentSettings.qrImage?.startsWith("data:")
+      ? paymentSettings.qrImage
+      : `https://wholesale-veg-shop.onrender.com${paymentSettings.qrImage}`
+  }
+  alt={t("paymentQrCode")}
+  style={{
+    width: "300px",
+    maxWidth: "100%",
+    border: "1px solid #ddd",
+    borderRadius: "12px",
+    padding: "10px",
+    background: "#fff",
+  }}
+/>
             </div>
           ) : (
             <div className="admin-error">
