@@ -57,7 +57,7 @@ function AdminLogin() {
 
       const response =
         await axios.post(
-          "http://localhost:5000/api/auth/admin/google-login",
+          "https://wholesale-veg-shop.onrender.com/api/auth/admin/google-login",
           {
             idToken,
           }
