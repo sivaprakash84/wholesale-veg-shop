@@ -161,7 +161,23 @@
 }
 
 .cart-icon {
-  font-size: 19px;
+  width: 20px;
+  height: 20px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  color: #263238;
+  opacity: 1;
+}
+
+.cart-icon svg {
+  width: 20px;
+  height: 20px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
 }
 
 .cart-count-badge {
@@ -1010,30 +1026,239 @@
     gap: 10px;
   }
 }
-
 /* =========================================
-   CART ICON VISIBILITY FIX
+   CART ICON VISIBILITY
 ========================================= */
 
 .cart-icon {
+  width: 20px;
+  height: 20px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
   color: #263238;
-  filter: none;
   opacity: 1;
+}
+
+.cart-icon svg {
+  width: 20px;
+  height: 20px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
 }
 
 @media (max-width: 600px) {
   .cart-icon {
-    color: #263238;
-    font-size: 21px;
-    opacity: 1;
+    width: 22px;
+    height: 22px;
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    line-height: 1;
+    color: #263238;
+    opacity: 1;
+  }
+
+  .cart-icon svg {
+    width: 22px;
+    height: 22px;
   }
 
   .cart-icon-wrapper {
+    width: 24px;
+    height: 24px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
     color: #263238;
     opacity: 1;
   }
 }
+
+/* =========================================
+   MOBILE CART - FINAL FIX
+========================================= */
+
+@media (max-width: 600px) {
+
+  .navbar-links .cart-link {
+    position: relative !important;
+
+    width: 42px !important;
+    min-width: 42px !important;
+    height: 42px !important;
+
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+
+    overflow: visible !important;
+
+    color: #263238 !important;
+  }
+
+  .navbar-links .cart-link .cart-icon-wrapper {
+    position: relative !important;
+
+    width: 26px !important;
+    height: 26px !important;
+
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+
+    overflow: visible !important;
+  }
+
+  .navbar-links .cart-link .cart-icon {
+    display: inline-flex !important;
+
+    width: 22px !important;
+    height: 22px !important;
+
+    align-items: center !important;
+    justify-content: center !important;
+
+    font-size: 21px !important;
+    line-height: 1 !important;
+
+    color: #263238 !important;
+    opacity: 1 !important;
+
+    visibility: visible !important;
+  }
+
+  .navbar-links .cart-link .cart-count-badge {
+    position: absolute !important;
+
+    top: -7px !important;
+    right: -8px !important;
+
+    min-width: 18px !important;
+    height: 18px !important;
+
+    padding: 0 4px !important;
+
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+
+    border-radius: 50% !important;
+
+    background: #176b3a !important;
+    color: #ffffff !important;
+
+    font-size: 10px !important;
+    font-weight: 700 !important;
+    line-height: 18px !important;
+
+    visibility: visible !important;
+    opacity: 1 !important;
+
+    z-index: 999 !important;
+  }
+
+  .navbar-links .cart-link .cart-label {
+    display: none !important;
+  }
+}
+
+/* =========================================
+   FINAL MOBILE CART VISIBILITY FIX
+========================================= */
+
+@media (max-width: 600px) {
+
+  /* Keep cart button visible */
+  .navbar-links .cart-link {
+    display: flex !important;
+    position: relative !important;
+
+    width: 42px !important;
+    min-width: 42px !important;
+    height: 42px !important;
+
+    align-items: center !important;
+    justify-content: center !important;
+
+    overflow: visible !important;
+    flex-shrink: 0 !important;
+
+    font-size: 20px !important;
+    color: #263238 !important;
+  }
+
+  /* Cart icon container */
+  .navbar-links .cart-link .cart-icon-wrapper {
+    position: relative !important;
+
+    width: 26px !important;
+    height: 26px !important;
+
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+
+    overflow: visible !important;
+
+    flex-shrink: 0 !important;
+  }
+
+  /* Cart symbol */
+  .navbar-links .cart-link .cart-icon {
+    display: flex !important;
+
+    width: 22px !important;
+    height: 22px !important;
+
+    align-items: center !important;
+    justify-content: center !important;
+
+    font-size: 21px !important;
+    line-height: 1 !important;
+
+    color: #263238 !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+  }
+
+  /* Cart count */
+  .navbar-links .cart-link .cart-count-badge {
+    display: flex !important;
+    position: absolute !important;
+
+    top: -6px !important;
+    right: -8px !important;
+
+    min-width: 18px !important;
+    width: auto !important;
+    height: 18px !important;
+
+    padding: 0 4px !important;
+
+    align-items: center !important;
+    justify-content: center !important;
+
+    background: #176b3a !important;
+    color: #ffffff !important;
+
+    border-radius: 50% !important;
+
+    font-size: 10px !important;
+    font-weight: 700 !important;
+    line-height: 18px !important;
+
+    visibility: visible !important;
+    opacity: 1 !important;
+
+    z-index: 9999 !important;
+  }
+
+  /* Hide only the text "Cart" on mobile */
+  .navbar-links .cart-link .cart-label {
+    display: none !important;
+  }
+}
+
