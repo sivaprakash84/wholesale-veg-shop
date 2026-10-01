@@ -1,5 +1,6 @@
 import { useCart } from "../context/CartContext";
 import { useLanguage } from "../i18n/LanguageContext";
+import { BACKEND_URL } from "../api/apiConfig";
 
 function ProductCard({ product }) {
   const { addToCart } = useCart();
@@ -103,9 +104,18 @@ function ProductCard({ product }) {
     <div className="product-card">
 
       <img
-        src={product.image}
-        alt={productName}
-      />
+  src={
+    product.image?.startsWith("http")
+      ? product.image
+      : `${BACKEND_URL}${product.image?.startsWith("/") ? "" : "/"}${product.image || ""}`
+  }
+  alt={productName}
+  className="product-image"
+  loading="lazy"
+  onError={(event) => {
+    event.currentTarget.style.display = "none";
+  }}
+/>
 
       <div className="product-info">
 

@@ -3401,3 +3401,73 @@ select {
     width: 100%;
   }
 }
+
+/* =====================================================
+   MOBILE RESPONSIVE SAFETY
+   Prevent horizontal scrolling on iOS + Android
+===================================================== */
+
+html,
+body,
+#root {
+  width: 100%;
+  max-width: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  overflow-x: hidden;
+}
+
+body {
+  overflow-x: hidden;
+  min-width: 0;
+}
+
+#root {
+  overflow-x: hidden;
+}
+
+/* =====================================================
+   PRODUCT IMAGE RESPONSIVE FIX
+===================================================== */
+
+.product-card {
+  width: 100%;
+  max-width: 400px;
+  min-width: 0;
+  overflow: hidden;
+  box-sizing: border-box;
+}
+
+.product-card .product-image {
+  display: block;
+  width: 100%;
+  height: 220px;
+  object-fit: cover;
+  object-position: center;
+  border-radius: 12px 12px 0 0;
+}
+
+/* Phones */
+@media (max-width: 600px) {
+
+  .product-card {
+    width: 100%;
+    max-width: 100%;
+  }
+
+  .product-card .product-image {
+    height: 190px;
+    max-width: 100%;
+  }
+}
+
+/* Small phones */
+@media (max-width: 380px) {
+
+  .product-card .product-image {
+    height: 175px;
+  }
+}
