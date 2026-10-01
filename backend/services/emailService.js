@@ -1,5 +1,59 @@
 const nodemailer = require("nodemailer");
 
+// ============================================
+// UNIT LABEL HELPER
+// ============================================
+
+const getUnitLabel = (unit) => {
+  if (!unit) {
+    return "unit";
+  }
+
+  const normalizedUnit =
+    String(unit).toLowerCase().trim();
+
+  switch (normalizedUnit) {
+    case "kg":
+    case "kgs":
+    case "kilogram":
+    case "kilograms":
+      return "kg";
+
+    case "g":
+    case "gram":
+    case "grams":
+      return "g";
+
+    case "piece":
+    case "pieces":
+    case "pcs":
+      return "pcs";
+
+    case "box":
+    case "boxes":
+      return "box";
+
+    case "bundle":
+    case "bundles":
+      return "bundle";
+
+    case "packet":
+    case "packets":
+    case "pack":
+    case "packs":
+      return "pack";
+
+    case "litre":
+    case "litres":
+    case "liter":
+    case "liters":
+    case "l":
+      return "L";
+
+    default:
+      return unit;
+  }
+};
 
 // ============================================
 // EMAIL TRANSPORTER
@@ -18,6 +72,7 @@ const createTransporter = () =>
       rejectUnauthorized: false,
     },
   });
+
 
 
 // ============================================
