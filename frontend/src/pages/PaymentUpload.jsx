@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import { auth } from "../firebase";
 import axios from "axios";
@@ -9,8 +9,49 @@ function PaymentUpload() {
   const navigate = useNavigate();
   const { t } = useLanguage();
 
-  const orderId = location.state?.orderId;
-  const amount = location.state?.amount;
+const [paymentData] = useState(() => {
+  try {
+    const saved =
+      sessionStorage.getItem("paymentData");
+
+    if (saved) {
+      return JSON.parse(saved);
+    }
+
+    return {
+      orderId: location.state?.orderId || "",
+      amount: location.state?.amount || "",
+    };
+  } catch (error) {
+    console.error(
+      "Failed to restore payment data:",
+      error
+    );
+
+    return {
+      orderId: location.state?.orderId || "",
+      amount: location.state?.amount || "",
+    };
+  }
+});
+
+const orderId = paymentData.orderId;
+const amount = paymentData.amount;
+
+useEffect(() => {
+  if (
+    location.state?.orderId &&
+    location.state?.amount
+  ) {
+    sessionStorage.setItem(
+      "paymentData",
+      JSON.stringify({
+        orderId: location.state.orderId,
+        amount: location.state.amount,
+      })
+    );
+  }
+}, [location.state]);
 
   const [screenshot, setScreenshot] = useState(null);
   const [preview, setPreview] = useState("");

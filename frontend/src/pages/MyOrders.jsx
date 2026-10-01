@@ -455,14 +455,11 @@ function MyOrders() {
                   <button
                     className="invoice-button"
                     onClick={() =>
-                      navigate(
-                        "/invoice",
-                        {
-                          state: {
-                            order: order,
-                          },
-                        }
-                      )
+                      navigate(`/invoice/${order.orderId}`, {
+  state: {
+    order: order,
+  },
+})
                     }
                   >
                     🧾{" "}

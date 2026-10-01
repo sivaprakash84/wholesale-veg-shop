@@ -80,9 +80,9 @@ function AppLayout() {
           />
 
           <Route
-            path="/invoice"
-            element={<Invoice />}
-          />
+  path="/invoice/:orderId"
+  element={<Invoice />}
+/>
 
           <Route
             path="/profile"
