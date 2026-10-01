@@ -1010,3 +1010,30 @@
     gap: 10px;
   }
 }
+
+/* =========================================
+   CART ICON VISIBILITY FIX
+========================================= */
+
+.cart-icon {
+  color: #263238;
+  filter: none;
+  opacity: 1;
+}
+
+@media (max-width: 600px) {
+  .cart-icon {
+    color: #263238;
+    font-size: 21px;
+    opacity: 1;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    line-height: 1;
+  }
+
+  .cart-icon-wrapper {
+    color: #263238;
+    opacity: 1;
+  }
+}

@@ -105,10 +105,14 @@ function ProductCard({ product }) {
 
       <img
   src={
-    product.image?.startsWith("http")
+  !product.image
+    ? ""
+    : product.image.startsWith("http")
       ? product.image
-      : `${BACKEND_URL}${product.image?.startsWith("/") ? "" : "/"}${product.image || ""}`
-  }
+      : product.image.startsWith("/")
+        ? product.image
+        : `${BACKEND_URL}/${product.image.replace(/^\/+/, "")}`
+}
   alt={productName}
   className="product-image"
   loading="lazy"

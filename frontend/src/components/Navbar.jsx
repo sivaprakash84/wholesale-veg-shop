@@ -362,9 +362,9 @@ function Navbar() {
 
             <span className="cart-icon-wrapper">
 
-              <span className="cart-icon">
-                🛒
-              </span>
+              <span className="cart-icon" aria-label="Cart">
+  🛒
+</span>
 
 
               {cartCount > 0 && (
