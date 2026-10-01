@@ -1292,7 +1292,7 @@ const confirmSelectedLocation = () => {
 
       const response =
         await fetch(
-          "http://localhost:5000/api/delivery-settings/calculate",
+          "https://wholesale-veg-shop.onrender.com/api/delivery-settings/calculate",
           {
             method: "POST",
 

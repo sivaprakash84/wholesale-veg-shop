@@ -88,7 +88,7 @@ function PaymentUpload() {
       );
 
       const response = await axios.post(
-        "http://localhost:5000/api/payment-settings/submit",
+        "https://wholesale-veg-shop.onrender.com/api/payment-settings/submit",
         formData,
         {
           headers: {

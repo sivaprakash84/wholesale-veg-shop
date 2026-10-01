@@ -94,7 +94,7 @@ function ProtectedAdminRoute() {
 
             const response =
               await axios.get(
-                "http://localhost:5000/api/auth/admin/verify",
+                "https://wholesale-veg-shop.onrender.com/api/auth/admin/verify",
                 {
                   headers: {
                     Authorization:

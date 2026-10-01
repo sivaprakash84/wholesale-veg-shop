@@ -98,7 +98,7 @@ const [successMessage, setSuccessMessage] = useState("");
         }
 
         const response = await fetch(
-          "http://localhost:5000/api/shop-settings",
+          "https://wholesale-veg-shop.onrender.com/api/shop-settings",
           {
             method: "GET",
             headers: {
@@ -176,7 +176,7 @@ const [successMessage, setSuccessMessage] = useState("");
       }
 
       const response = await fetch(
-        "http://localhost:5000/api/shop-settings",
+       "https://wholesale-veg-shop.onrender.com/api/shop-settings",
         {
           method: "PUT",
 

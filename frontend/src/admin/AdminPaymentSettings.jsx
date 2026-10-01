@@ -40,7 +40,7 @@ function AdminPaymentSettings() {
       const token = localStorage.getItem("adminToken");
 
       const response = await axios.put(
-        "http://localhost:5000/api/payment-settings",
+        "https://wholesale-veg-shop.onrender.com/api/payment-settings",
         formData,
         {
           headers: {

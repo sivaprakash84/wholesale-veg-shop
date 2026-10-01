@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const API_URL = "http://localhost:5000/api/orders";
+const API_URL = "https://wholesale-veg-shop.onrender.com/api/orders";
 
 // Create new order
 export const createOrder = async (orderData, token) => {

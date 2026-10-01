@@ -47,7 +47,7 @@ function AdminDeliverySettings() {
     const loadSettings = async () => {
       try {
         const response = await fetch(
-          "http://localhost:5000/api/delivery-settings",
+          "https://wholesale-veg-shop.onrender.com/api/delivery-settings",
           {
             headers: {
               Authorization: `Bearer ${adminToken}`,
@@ -203,7 +203,7 @@ function AdminDeliverySettings() {
       // -------------------------------------------------
 
       const response = await fetch(
-        "http://localhost:5000/api/delivery-settings",
+       "https://wholesale-veg-shop.onrender.com/api/delivery-settings",
         {
           method: "PUT",
 

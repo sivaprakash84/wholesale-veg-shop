@@ -2,8 +2,8 @@ import { useEffect, useMemo, useState } from "react";
 import axios from "axios";
 import "./AdminReports.css";
 
-const ORDERS_API = "http://localhost:5000/api/orders";
-const PRODUCTS_API = "http://localhost:5000/api/products";
+const ORDERS_API = "https://wholesale-veg-shop.onrender.com/api/orders";
+const PRODUCTS_API = "https://wholesale-veg-shop.onrender.com/api/products";
 
 const getAuthConfig = () => {
   const token = localStorage.getItem("adminToken");

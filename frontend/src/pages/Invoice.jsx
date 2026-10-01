@@ -157,7 +157,7 @@ function Invoice() {
         const token = await currentUser.getIdToken();
 
         const response = await axios.get(
-          `http://localhost:5000/api/orders/customer/${orderId}`,
+          `https://wholesale-veg-shop.onrender.com/api/orders/customer/${orderId}`,
           {
             headers: {
               Authorization: `Bearer ${token}`,

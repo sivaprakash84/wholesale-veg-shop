@@ -12,7 +12,7 @@ const getAuthConfig = () => {
   };
 };
 
-const API_URL = "http://localhost:5000/api/products";
+const API_URL = "https://wholesale-veg-shop.onrender.com/api/products";
 
 function AdminProducts() {
   const { language } = useLanguage();

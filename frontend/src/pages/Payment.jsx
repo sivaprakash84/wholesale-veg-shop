@@ -22,7 +22,7 @@ function Payment() {
         setError("");
 
         const response = await axios.get(
-          "http://localhost:5000/api/payment-settings"
+          "https://wholesale-veg-shop.onrender.com/api/payment-settings"
         );
 
         setPaymentSettings(response.data);
@@ -132,7 +132,7 @@ function Payment() {
               </p>
 
               <img
-                src={`http://localhost:5000${paymentSettings.qrImage}`}
+                src={`https://wholesale-veg-shop.onrender.com${paymentSettings.qrImage}`}
                 alt={t("paymentQrCode")}
                 style={{
                   width: "300px",

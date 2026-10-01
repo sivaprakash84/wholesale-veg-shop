@@ -14,8 +14,8 @@ const getAuthConfig = () => {
   };
 };
 
-const API_URL = "http://localhost:5000/api/orders";
-const BACKEND_URL = "http://localhost:5000";
+const API_URL = "https://wholesale-veg-shop.onrender.com/api/orders";
+const BACKEND_URL = "https://wholesale-veg-shop.onrender.com";
 
 const statuses = [
   "Pending",

@@ -50,7 +50,7 @@ function MyOrders() {
           await currentUser.getIdToken();
 
         const response = await axios.get(
-          "http://localhost:5000/api/orders/customer",
+          "https://wholesale-veg-shop.onrender.com/api/orders/customer",
           {
             headers: {
               Authorization: `Bearer ${token}`,

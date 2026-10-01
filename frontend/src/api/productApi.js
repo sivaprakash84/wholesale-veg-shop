@@ -1,6 +1,7 @@
 import axios from "axios";
+import { BACKEND_URL } from "./apiConfig";
 
-const API_URL = "http://localhost:5000/api/products";
+const API_URL = `${BACKEND_URL}/api/products`;
 
 export const getProducts = async () => {
   const response = await axios.get(API_URL);
