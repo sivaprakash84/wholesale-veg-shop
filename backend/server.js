@@ -2,7 +2,7 @@ const express = require("express");
 const path = require("path");
 const cors = require("cors");
 const dotenv = require("dotenv");
-
+const fs = require("fs");
 // ============================================
 // LOAD ENVIRONMENT VARIABLES FIRST
 // ============================================
@@ -27,6 +27,15 @@ const deliveryRoutes = require("./routes/deliveryRoutes");
 // ============================================
 
 const app = express();
+const paymentUploadDir = path.join(
+  __dirname,
+  "uploads",
+  "payment"
+);
+
+fs.mkdirSync(paymentUploadDir, {
+  recursive: true,
+});
 
 connectDB();
 
