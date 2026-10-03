@@ -565,6 +565,10 @@ function AdminProducts() {
                   Fruits
                 </option>
 
+                <option value="Pulses">
+                  Pulses
+                </option>
+
                 <option value="Leafy Vegetables">
                   Leafy Vegetables
                 </option>
